@@ -1,4 +1,3 @@
-%Created by Postnov D.D. 07.04.2014
 %Sniffers,buzzers,toggles and blinkers: dynamics of regulatory and
 %signaling patways in the cell
 %John J Tyson e t.c.
