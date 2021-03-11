@@ -14,9 +14,10 @@ nodeEq=1;
 
 
 tspan = [0 100];
-for i=1:1:(nodesN*nodeEq+vesselsN*vesselEq)
-   yzero(1,i)=1; 
-end
+yzero = ones(nodesN*nodeEq+vesselsN*vesselEq);
+% for i=1:1:(nodesN*nodeEq+vesselsN*vesselEq)
+%    yzero(1,i)=1; 
+% end
 
 
 sol=ode23s(@diff_equ, tspan, yzero);
@@ -83,7 +84,7 @@ function yprime = diff_equ(t,y)
      cn3=nodesMatrix(nodeIdx,5);
      cn3idx=find(nodesMatrix(:,1)==cn3,1,'first');
      
-
+    %yprime seems to 间隔赋值，so probably 0s in between
      
     if nodeType==0  %arterie side
         if (cn1==-1)

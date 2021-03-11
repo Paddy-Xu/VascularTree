@@ -10,12 +10,12 @@ R_neph=1;
 current=1;
 
 
-
 nephronsN=4;
 vesselsN=7;
 nodesN=3;
 
-for j=1:1:vesselsN;
+electricalResistance = zeros(1,vesselsN);
+for j=1:1:vesselsN
     length = vesselsMatrix(j,3);
     inDiameter = vesselsMatrix(j,4);
     outDiameter=inDiameter*1.1;
@@ -47,6 +47,8 @@ end
 
 
     function yPrime=model(t,y)
+        %yPrime=zeros(nephronsN+nephronsN,1);
+        
         for k=1:1:nephronsN
             cur=0;
             cnidx = find ( (nodesMatrix(:,9) == nephronsMatrix(k,1) | nodesMatrix(:,10) == nephronsMatrix(k,1) ), 1, 'first');
@@ -55,6 +57,9 @@ end
             if k==number
                 cur=current;
             end
+            % question: what is the size of yPrime? 
+            % ok, probably nephronsN + nodesN, so;
+            % yPrime = zeros(nephronsN + nodesN,1)
             yPrime(k,1)=cur+(y(nephronsN+cnidx)-y(k))/electricalResistance(cvidx) - y(k)/R_neph;
             
         end

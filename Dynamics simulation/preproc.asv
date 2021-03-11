@@ -10,12 +10,12 @@ R_neph=1;
 current=1;
 
 
-
 nephronsN=4;
 vesselsN=7;
 nodesN=3;
 
-for j=1:1:vesselsN;
+electricalResistance = zeros(vesselsN,1);
+for j=1:1:vesselsN
     length = vesselsMatrix(j,3);
     inDiameter = vesselsMatrix(j,4);
     outDiameter=inDiameter*1.1;

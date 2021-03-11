@@ -68,7 +68,7 @@ b=(0.39e-3);	%Protein concentration parameter [kPa*L^2/g^2]%
 
 
 tspan = [0 1000];
-yzero = zeros(1,nodesN*nodeEq+5); %probably needs to be careful when tranfering to np
+yzero = zeros(1,nodesN*nodeEq+5); %probably needs to be careful when t
 % for i=1:1:(nodesN*nodeEq)
 %     yzero(i)=1;
 % end
@@ -160,11 +160,9 @@ plot(t,y(1,:),t,y(7,:))
     end
 
     function yPrime = diff_equ(t,y)
-        % this is pre-written
         yPrime=zeros(nephronsN*nephronEq+nodesN*nodeEq,1);
         previousEq=0;
         
-        psi = zeros(1,nephronsN);
         for k=1:1:nephronsN
             psi(k)=psimax - (psimax - psimin)/ (1.0 + (psieq-psimin)/(psimax-psieq)*exp(alpha*(3*y(previousEq+(k-1)*nephronEq+6)/T/Fhen0 - 1.0)));
         end
